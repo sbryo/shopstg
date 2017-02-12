@@ -1,0 +1,17 @@
+Flask
+gunicorn
+flask-script
+ebaysdk
+python-amazon-simple-product-api
+pygoogle
+dropbox
+pymongo
+Flask-OAuth
+Flask-Compress
+AmazonAPIWrapper
+python-amazon-product-api
+python-amazon-simple-product-api
+validate_email
+flask_mail
+celery
+

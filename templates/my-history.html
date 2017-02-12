@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script type="text/javascript">
+
+    if (screen.width > 699){
+
+        window.location = "http://shops-app.herokuapp.com/desktop";
+    }
+    </script>
+
+
+    <link rel="icon" href="../static/img/shops.png" type="image/gif" sizes="16x16">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.semanticui.min.css">
+ <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
+
+    <title>Shops</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+
+        <![endif]-->
+
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+         <link rel="stylesheet" type="text/css" href="../static/DataTables/datatables.css">
+  <style>
+body {margin:0;}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+
+.icon_bar {
+	position: fixed;
+   
+	bottom: 0;
+	width: 100%;
+    text-align: center;
+    background-color: #00BFFF;
+    overflow: auto;
+    z-index: 99999;
+}
+.icon_bar a {
+    width: 20%;
+    float: left;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 36px;
+}
+.icon_bar a:hover {
+    background-color: #01B5F0;
+}
+
+.active {
+    background-color: #58D3F7 !important;
+}
+</style>
+  
+        <style>#results { color:black;  }
+
+        #load{
+    width:100%;
+    height:100%;
+    left: 0px;
+    top: 0px;
+    position:fixed;
+    z-index:9999;
+    background:url("../static/img/flickr.gif") 50% 50% no-repeat rgb(255,255,255);
+}
+
+
+        </style>
+
+
+
+
+</head>
+
+<body id="page-top" class="index">
+
+<div class="icon_bar">
+  <a  href="http://shops-app.herokuapp.com/shops"><i class="fa fa-arrow-up"></i></a>
+  <a href="http://shops-app.herokuapp.com/my-space"><i class="fa fa-home"></i></a>
+  <a href="http://shops-app.herokuapp.com/favorites"><i class="fa fa-heart"></i></a>
+  <a class="active" href="http://shops-app.herokuapp.com/history"><i class="fa fa-history"></i></a>
+  <a href="http://shops-app.herokuapp.com/marketplace"><i class="fa fa-users"></i></a>
+</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+<a class="navbar-toggle" href="http://shops-app.herokuapp.com/search_page"><i class="fa fa-search" aria-hidden="true"></i></a>
+              <a class="navbar-brand" href="#page-top">  Shops  </a>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    
+		    	    <!-- SEARCH -->
+		                     <div class="col-sm-3 col-md-3">
+        <form method="post" action="/search" class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" name="add" class="form-control" placeholder="Smart-Search">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+    </div>	    
+		    <!-- END -->
+		    
+                 <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                       <li class="page-scroll">
+                       <a href="http://shops-app.herokuapp.com/shops"><i class="fa fa-arrow-up"></i>  Top-Shop</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="http://shops-app.herokuapp.com/my-space"><i class="fa fa-home"></i>  My-Space</a>
+                    </li>
+                    
+                      <li class="page-scroll">
+                        <a href="http://shops-app.herokuapp.com/favorites"><i class="fa fa-heart"></i>  My Favorites</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="http://shops-app.herokuapp.com/history"><i class="fa fa-history"></i>  My History</a>
+                    </li>
+                                        <li class="page-scroll">
+                        <a href="http://shops-app.herokuapp.com/marketplace"><i class="fa fa-users"></i>  Market Place</a>
+                    </li>
+                                                            <li class="page-scroll">
+                        <a href="http://shops-app.herokuapp.com/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout</a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+      <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>History</h2>
+                  <!--           <hr class="star-primary"> -->
+					
+<h5>Your Items History</h5>
+<form action="/delete/all" method="get">
+                <button style="float: left;" type="submit" name="add" class="btn btn-danger btn-sm btn-circle" id="Raspberry gameboy" data-loading-text="<i class='fa fa-spinner fa-spin '></i> "><i class="fa fa-trash-o"></i></button>
+</form>
+			<p></p>
+                               <center><div id="load"></div></center>
+<div id="contents">
+
+
+  <table id="history" cellspacing="0" width="100%" class="ui celled table">
+
+        <tbody>
+      {% for x in list %}
+                <tr>
+                <td><big><b> <font color="#000000">{{x[0]}}</font></big></td></b>
+                <td>{{x[1]}}</td>
+                <td><form method="post" action="http://shops-app.herokuapp.com/history_results/{{x[0]}}"><button type="submit" name="add" class="btn btn-success btn-block" id="loads" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading...">Results</button></form></td>
+                <td><form method="post" action="http://shops-app.herokuapp.com/history/delete/{{x[1]}}"><button type="submit" name="add" class="btn btn-danger btn-block" id="{{x[0]}}" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Deleting...">Delete</button></form></td>
+             
+                </tr>
+        {% endfor %}
+       </tbody>
+    </table>
+
+		
+					
+					
+                </div>
+            </div>
+           
+    </section>
+
+    <!-- jQuery -->
+    <script src="../static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="../static/js/classie.js"></script>
+    <script src="../static/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../static/js/jqBootstrapValidation.js"></script>
+    <script src="../static/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../static/js/freelancer.js"></script>
+	
+	 <script type="../static/text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+                        <script>
+                        $(document).ready(function() {
+
+                                $("#history").DataTable({responsive=true});
+                              
+                        } );
+                        </script>
+
+
+<script type="text/javascript">document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.getElementById('load').style.visibility="visible";
+       document.getElementById('contents').style.visibility="hidden";
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },1000);
+  }
+}</script>
+
+
+    <!-- To The Back Page -->
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '275750752809365',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+	$('.btn').on('click', function() {
+    var $this = $(this);
+  $this.button('loading');
+    setTimeout(function() {
+       $this.button('reset');
+   }, 100000);
+});
+</script>
+<!--
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" onclick="goBack()">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+    </div>
+</div>
+-->
+
+</body>
+
+</html>
